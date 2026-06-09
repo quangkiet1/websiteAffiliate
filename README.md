@@ -1,4 +1,4 @@
-# Affiliate Live Co. Website
+﻿# Affiliate Live Co. Website
 
 Website HTML/CSS/JavaScript thuần với backend Node.js + Express.js và PostgreSQL. Dự án có trang giới thiệu dịch vụ, form đặt lịch không cần đăng nhập, admin đăng nhập bằng session và quản lý lịch hẹn.
 
