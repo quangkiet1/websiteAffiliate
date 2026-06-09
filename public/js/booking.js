@@ -42,6 +42,17 @@ function getApiBaseUrl() {
     return 'http://localhost:3000';
   }
 
+  // GitHub Pages or production
+  const hostname = window.location.hostname;
+  if (hostname.includes('github.io')) {
+    return 'https://website-affiliate.onrender.com';
+  }
+
+  // If running on Render, use relative path
+  if (hostname.includes('render.com')) {
+    return '';
+  }
+
   return '';
 }
 
