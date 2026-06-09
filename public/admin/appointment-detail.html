@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết lịch hẹn | Affiliate Live Co.</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="appointment-detail">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/company-logo.png" alt="VGrow Agency">
+      </a>
+      <nav class="admin-nav" aria-label="Menu admin">
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="appointments.html">Lịch hẹn</a>
+        <a href="../index.html">Xem website</a>
+      </nav>
+      <button class="admin-logout" type="button" data-logout>Đăng xuất</button>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <h1>Chi tiết lịch hẹn</h1>
+          <p>Xem thông tin đầy đủ và cập nhật xử lý nội bộ.</p>
+        </div>
+        <div class="admin-user">
+          <span>Admin</span>
+          <strong data-admin-name>Đang tải...</strong>
+        </div>
+      </div>
+
+      <div class="admin-message" id="adminMessage" role="status"></div>
+
+      <section class="admin-panel">
+        <div class="admin-actions" style="margin-bottom: 18px;">
+          <a class="btn btn-outline" href="appointments.html">Quay lại danh sách</a>
+        </div>
+
+        <div class="detail-grid" id="appointmentDetail">
+          <div class="detail-item"><span>Họ và tên</span><strong data-detail="full_name">Đang tải...</strong></div>
+          <div class="detail-item"><span>Số điện thoại</span><strong data-detail="phone">Đang tải...</strong></div>
+          <div class="detail-item"><span>Gmail / Email</span><strong data-detail="email">Đang tải...</strong></div>
+          <div class="detail-item"><span>Dịch vụ quan tâm</span><strong data-detail="service_interest">Đang tải...</strong></div>
+          <div class="detail-item"><span>Ngày hẹn</span><strong data-detail="appointment_date">Đang tải...</strong></div>
+          <div class="detail-item"><span>Giờ hẹn</span><strong data-detail="appointment_time">Đang tải...</strong></div>
+          <div class="detail-item"><span>Trạng thái lịch hẹn</span><strong data-detail="status">Đang tải...</strong></div>
+          <div class="detail-item"><span>Ngày tạo lịch</span><strong data-detail="created_at">Đang tải...</strong></div>
+          <div class="detail-item full"><span>Ghi chú của khách</span><p data-detail="note">Đang tải...</p></div>
+        </div>
+
+        <div class="detail-actions">
+          <div class="form-field">
+            <label for="detailStatus">Cập nhật trạng thái</label>
+            <select id="detailStatus">
+              <option value="PENDING">PENDING - Chờ xác nhận</option>
+              <option value="CONFIRMED">CONFIRMED - Đã xác nhận</option>
+              <option value="COMPLETED">COMPLETED - Đã hoàn thành</option>
+              <option value="CANCELLED">CANCELLED - Đã hủy</option>
+            </select>
+          </div>
+          <div class="admin-actions">
+            <button class="btn btn-primary" type="button" id="saveStatus">Lưu trạng thái</button>
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-top: 20px;">
+          <label for="adminNote">Ghi chú nội bộ của admin</label>
+          <textarea id="adminNote" rows="5"></textarea>
+        </div>
+        <div class="admin-actions" style="margin-top: 14px;">
+          <button class="btn btn-primary" type="button" id="saveNote">Lưu ghi chú</button>
+        </div>
+
+        <div class="danger-zone">
+          <h3>Xóa lịch hẹn</h3>
+          <p>Chỉ xóa khi lịch hẹn không còn cần lưu trong hệ thống.</p>
+          <button class="btn btn-danger" type="button" id="deleteAppointment">Xóa lịch hẹn</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/admin.js"></script>
+</body>
+</html>
+
+
+
+

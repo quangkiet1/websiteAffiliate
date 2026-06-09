@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Đặt lịch hẹn với Affiliate Live Co. Chọn ngày giờ, nhập thông tin và xác nhận lịch hẹn.">
+  <title>Đặt lịch hẹn | Affiliate Live Co.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="has-fixed-header" data-page="booking">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Affiliate Live Co.">
+        <img class="brand-logo" src="assets/company-logo.png" alt="VGrow Agency">
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Menu chính">
+        <a class="nav-link" href="index.html">Trang chủ</a>
+        <a class="nav-link" href="about.html">Giới thiệu</a>
+        <a class="nav-link" href="services.html">Dịch vụ</a>
+        <a class="nav-link" href="contact.html">Liên hệ</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary" href="booking.html">Đặt lịch hẹn</a>
+        <button class="menu-toggle" type="button" aria-label="Mở menu" aria-controls="mainNav" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Đặt lịch hẹn</p>
+        <h1>Chọn thời gian trao đổi với đội ngũ Affiliate Live Co.</h1>
+        <p class="lead">Nhãn hàng không cần đăng ký hay đăng nhập. Chọn ngày giờ phù hợp, thêm thông tin liên hệ và xác nhận lịch hẹn.</p>
+      </div>
+    </section>
+
+    <section class="section booking-section">
+      <div class="container">
+        <div class="appointment-shell" id="appointmentShell">
+          <div class="appointment-brand">
+            <a class="brand" href="index.html">
+              <img class="brand-logo" src="assets/company-logo.png" alt="VGrow Agency">
+            </a>
+            <div class="appointment-help">
+              <a href="contact.html">Contact Us</a>
+              <a href="services.html">Services</a>
+            </div>
+          </div>
+
+          <div class="appointment-steps" aria-label="Tiến trình đặt lịch">
+            <span class="step-pill is-active" data-step-pill="datetime">Date & time</span>
+            <span class="step-separator">›</span>
+            <span class="step-pill" data-step-pill="details">Details</span>
+            <span class="step-separator">›</span>
+            <span class="step-pill" data-step-pill="booked">Booked</span>
+          </div>
+
+          <div class="booking-step is-active" data-booking-step="datetime">
+            <div class="booking-topline">
+              <div>
+                <h2>Select a date & time</h2>
+                <p>Chọn gói dịch vụ, ngày và khung giờ để chuyển sang bước nhập thông tin.</p>
+              </div>
+              <div class="booking-service-select">
+                <label for="service_interest">Gói dịch vụ</label>
+                <select id="service_interest" name="service_interest">
+                  <option value="AFFILIATE">Tiếp thị liên kết</option>
+                  <option value="LIVESTREAM">Livestream bán hàng</option>
+                  <option value="FULL_PACKAGE">Gói bao trọn Affiliate & Livestream</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="datetime-layout">
+              <div class="calendar-panel">
+                <div class="calendar-header">
+                  <button class="calendar-nav" type="button" id="prevMonth" aria-label="Tháng trước">‹</button>
+                  <strong id="calendarMonth">June 2026</strong>
+                  <button class="calendar-nav" type="button" id="nextMonth" aria-label="Tháng sau">›</button>
+                </div>
+                <div class="calendar-weekdays" aria-hidden="true">
+                  <span>Sun</span>
+                  <span>Mon</span>
+                  <span>Tue</span>
+                  <span>Wed</span>
+                  <span>Thu</span>
+                  <span>Fri</span>
+                  <span>Sat</span>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+              </div>
+
+              <aside class="time-panel">
+                <h3>Select a time</h3>
+                <div class="time-grid" id="timeGrid"></div>
+              </aside>
+            </div>
+
+            <div class="appointment-footer">
+              <div class="selected-slot" id="selectedSlot">Chưa chọn ngày giờ.</div>
+              <button class="btn btn-primary btn-orange" type="button" id="continueToDetails" disabled>Tiếp tục</button>
+            </div>
+          </div>
+
+          <form class="booking-step booking-details" data-booking-step="details" id="bookingForm" novalidate>
+            <div class="details-main">
+              <div>
+                <h2>Add more details about you</h2>
+                <p class="booking-muted">Thông tin này giúp chúng tôi liên hệ xác nhận và chuẩn bị nội dung trao đổi.</p>
+
+                <div class="details-form-grid">
+                  <div class="form-field">
+                    <label for="full_name">Full name*</label>
+                    <input id="full_name" name="full_name" type="text" autocomplete="name" placeholder="e.g. Nguyễn Văn A" required>
+                    <span class="field-error" data-error-for="full_name"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="email">Email*</label>
+                    <input id="email" name="email" type="email" autocomplete="email" placeholder="e.g. name@example.com" required>
+                    <span class="field-error" data-error-for="email"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="phone">Phone number*</label>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="e.g. 0900 123 456" required>
+                    <span class="field-error" data-error-for="phone"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="guests">Guests</label>
+                    <input id="guests" name="guests" type="text" placeholder="Email người tham dự nếu có">
+                    <span class="field-error" data-error-for="guests"></span>
+                  </div>
+
+                  <div class="form-field full">
+                    <label for="note">Ghi chú thêm</label>
+                    <textarea id="note" name="note" rows="5" placeholder="Tên sản phẩm, ngành hàng, link sản phẩm hoặc thông tin cần trao đổi"></textarea>
+                    <span class="field-error" data-error-for="note"></span>
+                  </div>
+                </div>
+
+                <div class="form-message" id="bookingMessage" role="status"></div>
+
+                <div class="details-actions">
+                  <button class="btn btn-outline btn-dark-outline" type="button" id="backToDateTime">Quay lại</button>
+                  <button class="btn btn-primary btn-orange" type="submit" id="bookingSubmit">Confirm Appointment</button>
+                </div>
+              </div>
+
+              <aside class="meeting-card">
+                <h3>Let's Talk</h3>
+                <div class="meeting-block">
+                  <span>MEETING DETAILS</span>
+                  <strong>Online</strong>
+                  <strong>30 minutes</strong>
+                </div>
+                <div class="meeting-block">
+                  <span>OPERATOR</span>
+                  <strong>Affiliate Live Co.</strong>
+                  <p>Business Development</p>
+                  <p>hello@affiliatelive.vn</p>
+                  <p>0900 123 456</p>
+                </div>
+                <div class="meeting-block">
+                  <span>DATE & TIME</span>
+                  <strong id="detailsDateTime">Chưa chọn</strong>
+                  <p id="detailsService">Tiếp thị liên kết</p>
+                  <p id="detailsPrice">10M/tháng + 5% GMV từ kênh affiliate.</p>
+                </div>
+              </aside>
+            </div>
+          </form>
+
+          <div class="booking-step booked-panel" data-booking-step="booked">
+            <a class="back-link" href="booking.html">← All Appointments</a>
+            <h2>Appointment Reserved!</h2>
+            <p class="booking-muted strong">We will come back to you to confirm it.</p>
+            <h3>Nhãn hàng - Let's Talk Booking</h3>
+
+            <div class="booking-summary-table" id="bookingSummaryTable"></div>
+
+            <div class="booked-actions">
+              <a class="btn btn-outline btn-dark-outline" href="services.html">Xem dịch vụ</a>
+              <button class="btn btn-primary btn-orange" type="button" id="bookAnother">Đặt lịch khác</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><a class="brand" href="index.html"><img class="brand-logo" src="assets/company-logo.png" alt="VGrow Agency"></a><p>Đơn vị hỗ trợ nhãn hàng bán sản phẩm thông qua tiếp thị liên kết, livestream bán hàng và gói kết hợp toàn diện.</p></div>
+        <div><h3>Dịch vụ</h3><ul><li><a href="services.html">Tiếp thị liên kết</a></li><li><a href="services.html">Livestream bán hàng</a></li><li><a href="services.html">Gói bao trọn</a></li></ul></div>
+        <div><h3>Liên hệ</h3><ul><li>0900 123 456</li><li>hello@affiliatelive.vn</li><li>TP. Hồ Chí Minh</li></ul></div>
+        <div><h3>Mạng xã hội</h3><ul><li><a href="contact.html">Facebook</a></li><li><a href="contact.html">TikTok</a></li><li><a href="contact.html">YouTube</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">© 2026 Affiliate Live Co. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
+
+
+

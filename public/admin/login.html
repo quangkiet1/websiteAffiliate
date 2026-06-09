@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập admin | Affiliate Live Co.</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-login" data-admin-page="login">
+  <main class="login-card">
+    <a class="brand" href="../index.html">
+      <img class="brand-logo" src="../assets/company-logo.png" alt="VGrow Agency">
+    </a>
+    <h1>Đăng nhập admin</h1>
+    <p class="lead">Quản lý lịch hẹn từ nhãn hàng và khách hàng.</p>
+
+    <form id="adminLoginForm" novalidate>
+      <div class="form-field">
+        <label for="adminEmail">Email</label>
+        <input id="adminEmail" name="email" type="email" autocomplete="email" required>
+        <span class="field-error" data-error-for="email"></span>
+      </div>
+      <div class="form-field">
+        <label for="adminPassword">Mật khẩu</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <span class="field-error" data-error-for="password"></span>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit" id="adminLoginButton">Đăng nhập</button>
+      </div>
+      <div class="form-message" id="adminLoginMessage" role="status"></div>
+    </form>
+  </main>
+
+  <script src="../js/admin.js"></script>
+</body>
+</html>
+
+
+
+

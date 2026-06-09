@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 230" role="img" aria-labelledby="title desc">
+  <title id="title">VGrow Agency</title>
+  <desc id="desc">Logo VGrow Agency màu xanh dương với biểu tượng chữ V và mũi tên tăng trưởng.</desc>
+  <defs>
+    <linearGradient id="blueMain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1fc5ff"/>
+      <stop offset="0.48" stop-color="#0876d7"/>
+      <stop offset="1" stop-color="#031b69"/>
+    </linearGradient>
+    <linearGradient id="navyMain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#102a50"/>
+      <stop offset="1" stop-color="#020b2c"/>
+    </linearGradient>
+    <linearGradient id="textBlue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#20b7ff"/>
+      <stop offset="0.52" stop-color="#0d69cf"/>
+      <stop offset="1" stop-color="#03135d"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#081632" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <path d="M60 34h55l75 164h-62L60 34z" fill="url(#blueMain)"/>
+    <path d="M145 34h48l42 102-30 62h-38L145 34z" fill="url(#blueMain)"/>
+    <path d="M254 34h93l-66 71h44l-100 93 33-72h-54l50-92z" fill="url(#navyMain)"/>
+    <path d="M333 35h22l-50 64h42l-114 106 45-87h-52l28-46h55l-36 53 78-76h-43l25-14z" fill="#ffffff"/>
+    <path d="M316 105h49l-25 41h35l-96 58 38-64h-45l44-35z" fill="url(#blueMain)"/>
+  </g>
+
+  <g transform="translate(380 48)">
+    <text x="0" y="72"
+      font-family="Arial Black, Impact, Arial, sans-serif"
+      font-size="92"
+      font-weight="900"
+      letter-spacing="-2"
+      fill="url(#textBlue)"
+      stroke="#06265f"
+      stroke-width="2">GROW</text>
+
+    <path d="M0 110h510l-14 45H-16z" fill="url(#navyMain)"/>
+    <text x="250" y="143"
+      text-anchor="middle"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="36"
+      font-weight="800"
+      letter-spacing="20"
+      fill="#ffffff">AGENCY</text>
+  </g>
+</svg>

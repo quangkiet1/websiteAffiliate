@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard admin | Affiliate Live Co.</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-body" data-admin-page="dashboard">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../assets/company-logo.png" alt="VGrow Agency">
+      </a>
+      <nav class="admin-nav" aria-label="Menu admin">
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="appointments.html">Lịch hẹn</a>
+        <a href="../index.html">Xem website</a>
+      </nav>
+      <button class="admin-logout" type="button" data-logout>Đăng xuất</button>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-topbar">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Tổng quan tình trạng lịch hẹn.</p>
+        </div>
+        <div class="admin-user">
+          <span>Admin</span>
+          <strong data-admin-name>Đang tải...</strong>
+        </div>
+      </div>
+
+      <div class="admin-message" id="adminMessage" role="status"></div>
+
+      <section class="stats-grid" aria-label="Thống kê lịch hẹn">
+        <article class="stat-card"><span>Tổng số lịch hẹn</span><strong id="totalAppointments">0</strong></article>
+        <article class="stat-card"><span>Lịch hẹn hôm nay</span><strong id="todayAppointments">0</strong></article>
+        <article class="stat-card"><span>Lịch chờ xác nhận</span><strong id="pendingAppointments">0</strong></article>
+        <article class="stat-card"><span>Lịch đã xác nhận</span><strong id="confirmedAppointments">0</strong></article>
+        <article class="stat-card"><span>Lịch đã hoàn thành</span><strong id="completedAppointments">0</strong></article>
+        <article class="stat-card"><span>Lịch đã hủy</span><strong id="cancelledAppointments">0</strong></article>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/admin.js"></script>
+</body>
+</html>
+
+
+
+
