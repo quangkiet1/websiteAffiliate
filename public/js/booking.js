@@ -1,15 +1,15 @@
 ﻿const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const SERVICE_LABELS = {
-  AFFILIATE: 'Ti?p th? li�n k?t',
-  LIVESTREAM: 'Livestream b�n h�ng',
-  FULL_PACKAGE: 'G�i bao tr?n Affiliate & Livestream'
+  AFFILIATE: 'Tiếp thị liên kết',
+  LIVESTREAM: 'Livestream bán hàng',
+  FULL_PACKAGE: 'Gói bao trọn Affiliate & Livestream'
 };
 
 const SERVICE_PRICES = {
-  AFFILIATE: '10M/th�ng + 5% GMV t? k�nh affiliate.',
-  LIVESTREAM: '15M/th�ng + 8% GMV t? phi�n livestream.',
-  FULL_PACKAGE: '25M/th�ng + 10% GMV t? Affiliate & Livestream.'
+  AFFILIATE: '10M/tháng + 5% GMV từ kênh affiliate.',
+  LIVESTREAM: '15M/tháng + 8% GMV từ phiên livestream.',
+  FULL_PACKAGE: '25M/tháng + 10% GMV từ Affiliate & Livestream.'
 };
 
 const TIME_SLOTS = [
@@ -152,10 +152,10 @@ function updateSelectedSlot() {
   const hasSelection = Boolean(bookingState.selectedDate && bookingState.selectedTime);
   const selectedText = hasSelection
     ? `${formatAppointmentDate(bookingState.selectedDate)}, ${bookingState.selectedTimeLabel}`
-    : 'Chua ch?n ng�y gi?.';
+    : 'Chưa chọn ng�y gi?.';
 
   if (slot) {
-    slot.textContent = hasSelection ? `�� ch?n: ${selectedText}` : selectedText;
+    slot.textContent = hasSelection ? `��Đã chọn: ${selectedText}` : selectedText;
   }
 
   if (continueButton) {
@@ -163,7 +163,7 @@ function updateSelectedSlot() {
   }
 
   if (detailsDateTime) {
-    detailsDateTime.textContent = hasSelection ? selectedText : 'Chua ch?n';
+    detailsDateTime.textContent = hasSelection ? selectedText : 'Chưa chọn';
   }
 
   if (detailsService) {
@@ -269,28 +269,28 @@ function setupCalendarControls() {
 function validateDetails(values) {
   const errors = {};
 
-  if (!values.full_name) errors.full_name = 'Vui l�ng nh?p h? v� t�n.';
-  if (!values.phone) errors.phone = 'Vui l�ng nh?p s? di?n tho?i.';
+  if (!values.full_name) errors.full_name = 'Vui lòng nhập họ và tên.';
+  if (!values.phone) errors.phone = 'Vui lòng nhập số điện thoại.';
 
   if (!values.email) {
-    errors.email = 'Vui l�ng nh?p email.';
+    errors.email = 'Vui lòng nhập email.';
   } else if (!EMAIL_PATTERN.test(values.email)) {
-    errors.email = 'Email chua d�ng d?nh d?ng.';
+    errors.email = 'Email chưa đúng định dạng.';
   }
 
-  if (!bookingState.serviceInterest) errors.service_interest = 'Vui l�ng ch?n d?ch v?.';
-  if (!bookingState.selectedDate) errors.appointment_date = 'Vui l�ng ch?n ng�y h?n.';
-  if (!bookingState.selectedTime) errors.appointment_time = 'Vui l�ng ch?n gi? h?n.';
+  if (!bookingState.serviceInterest) errors.service_interest = 'Vui lòng chọn dịch vụ.';
+  if (!bookingState.selectedDate) errors.appointment_date = 'Vui lòng chọn ngày hẹn.';
+  if (!bookingState.selectedTime) errors.appointment_time = 'Vui lòng chọn giờ hẹn.';
 
   return errors;
 }
 
 function buildNote(values) {
   const lines = [
-    values.note ? `Ghi ch� kh�ch: ${values.note}` : '',
-    values.guests ? `Kh�ch m?i: ${values.guests}` : '',
+    values.note ? `Ghi chú khách: ${values.note}` : '',
+    values.guests ? `Khách mời: ${values.guests}` : '',
     `G�i d?ch v?: ${SERVICE_LABELS[bookingState.serviceInterest]}`,
-    `Gi� g�i: ${SERVICE_PRICES[bookingState.serviceInterest]}`
+    `Giá gói: ${SERVICE_PRICES[bookingState.serviceInterest]}`
   ].filter(Boolean);
 
   return lines.join('\n');
@@ -303,7 +303,7 @@ function renderConfirmation(values, appointment) {
   const when = `${formatAppointmentDate(bookingState.selectedDate)}, ${bookingState.selectedTimeLabel}`;
   const contactDetails = [
     `${escapeHtml(values.full_name)} - ${escapeHtml(values.email)} - ${escapeHtml(values.phone)}`,
-    values.guests ? `Kh�ch m?i - ${escapeHtml(values.guests)}` : ''
+    values.guests ? `Khách mời - ${escapeHtml(values.guests)}` : ''
   ].filter(Boolean).join('<br>');
 
   summary.innerHTML = `
@@ -329,7 +329,7 @@ function renderConfirmation(values, appointment) {
     </div>
     <div class="summary-row">
       <span>Status</span>
-      <strong>Ch? x�c nh?n</strong>
+      <strong>Chờ xác nhận</strong>
     </div>
     <div class="summary-row">
       <span>Booking ID</span>
@@ -403,12 +403,12 @@ function setupBookingForm() {
 
     if (Object.keys(errors).length > 0) {
       Object.entries(errors).forEach(([name, message]) => setError(name, message));
-      showMessage('error', 'Vui l�ng ki?m tra l?i th�ng tin d?t l?ch.');
+      showMessage('error', 'Vui lòng kiểm tra lại thông tin đặt lịch.');
       return;
     }
 
     submitButton.disabled = true;
-    submitButton.textContent = '�ang x�c nh?n...';
+    submitButton.textContent = 'Đang xác nhận...';
 
     const payload = {
       full_name: values.full_name,
@@ -435,7 +435,7 @@ function setupBookingForm() {
         if (data.errors) {
           Object.entries(data.errors).forEach(([name, message]) => setError(name, message));
         }
-        showMessage('error', data.message || 'Kh�ng th? x�c nh?n l?ch h?n l�c n�y.');
+        showMessage('error', data.message || 'Không thể xác nhận lịch hẹn lúc này.');
         return;
       }
 
@@ -448,7 +448,7 @@ function setupBookingForm() {
       form.reset();
       showStep('booked');
     } catch (error) {
-      showMessage('error', 'Kh�ng th? k?t n?i backend. H�y ch?y npm start v� m? d�ng API ? http://localhost:3000.');
+      showMessage('error', 'Không thể kết nối backend. Hãy chạy npm start và mở đúng API ở http://localhost:3000.');
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = 'Confirm Appointment';
