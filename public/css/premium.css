@@ -195,6 +195,42 @@ body {
   color: var(--text-primary);
 }
 
+/* Full background image variant */
+.hero.hero-bg-image {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(5, 10, 30, 0.65) 0%,
+      rgba(5, 10, 30, 0.55) 50%,
+      rgba(5, 10, 30, 0.75) 100%
+    ),
+    url('../assets/hero-livestream.png') center center / cover no-repeat;
+  color: #fff;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Centered layout for bg-image hero */
+.hero-content-center {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 60px 0;
+}
+.hero-content-center .hero-badge {
+  margin: 0 auto 24px;
+}
+.hero-content-center h1 {
+  color: #fff;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -218,9 +254,6 @@ body {
   box-shadow: var(--shadow-card-hover);
 }
 
-.hero-bg-overlay {
-  display: none;
-}
 
 /* For pages without image, fallback hero (about, services, contact) */
 .page-hero {
@@ -575,6 +608,24 @@ h3 {
 .feature-list li { color: var(--text-secondary); }
 .feature-list li::before { background: var(--brand-500); }
 
+/* Remove pseudo-bullet when li content starts with emoji checkmark */
+.feature-list li:not([class]) {
+  padding-left: 24px;
+}
+/* Override: when li text starts with ✅ or ✔, hide the CSS dot bullet */
+.service-card .feature-list li::before,
+.detail-block .feature-list li::before,
+.faq-item .feature-list li::before,
+.problem-card .feature-list li::before {
+  display: none;
+}
+.service-card .feature-list li,
+.detail-block .feature-list li,
+.faq-item .feature-list li {
+  padding-left: 0;
+}
+
+
 /* ── Footer ─────────────────────────────────────────────────── */
 .footer {
   background: var(--surface-100);
@@ -823,4 +874,215 @@ h3 {
 
 .meeting-block {
   border-top-color: var(--surface-200) !important;
+}
+
+/* ── Section dark problems (homepage) ───────────────────────── */
+.section-dark-problems {
+  background: #0d1117;
+  padding: 80px 0;
+}
+.section-dark-problems h2 {
+  color: #fff;
+  margin-bottom: 48px;
+}
+.section-dark-problems .section-divider {
+  background: var(--grad-brand);
+}
+
+.grid.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.problem-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: background .25s, border-color .25s, transform .25s var(--ease-spring);
+}
+.problem-card:hover {
+  background: rgba(101,86,255,0.15);
+  border-color: rgba(101,86,255,0.4);
+  transform: translateY(-4px);
+}
+.problem-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.problem-card h3 {
+  color: #fff;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.problem-card p {
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── Reason item with icon ───────────────────────────────────── */
+.reason-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+/* ── Value card (about page) ────────────────────────────────── */
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.value-card {
+  padding: 32px;
+}
+.value-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--brand-200);
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+}
+
+/* ── Service detail layout ──────────────────────────────────── */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.detail-main { display: flex; flex-direction: column; gap: 24px; }
+.detail-block { padding: 32px; }
+.detail-block h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--surface-200);
+}
+.detail-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+.detail-cols h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--brand-700);
+}
+
+.process-ol {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.process-ol li {
+  counter-increment: step;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+.process-ol li::before {
+  content: counter(step, decimal-leading-zero);
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-weight: 700;
+  font-size: 13px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefit-list li {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+.detail-sidebar {
+  position: sticky;
+  top: 100px;
+}
+.sidebar-cta {
+  padding: 28px;
+  text-align: center;
+  position: relative;
+}
+.sidebar-cta h3 { margin-bottom: 16px; }
+.sidebar-price {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--brand-700);
+  margin-bottom: 4px;
+}
+.sidebar-price span {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.sidebar-note {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ── Service price hero ─────────────────────────────────────── */
+.service-price-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--brand-50);
+  border: 1px solid var(--brand-200);
+  border-radius: var(--radius-full);
+  padding: 8px 20px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.service-price-hero span {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--brand-700);
+}
+.service-price-hero strong {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ── FAQ section ────────────────────────────────────────────── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.faq-item {
+  padding: 28px 32px;
+}
+.faq-item h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+.faq-item p {
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── Contact info list ──────────────────────────────────────── */
+.info-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 0;
 }

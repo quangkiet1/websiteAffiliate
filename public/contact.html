@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Liên hệ Affiliate Live Co. để trao đổi về dịch vụ bán sản phẩm qua affiliate và livestream.">
-  <title>Liên hệ | Affiliate Live Co.</title>
+  <meta name="description" content="Liên hệ V-Grow Agency - đồng hành cùng doanh nghiệp trong các chiến dịch Affiliate Marketing và Livestream Commerce.">
+  <title>Liên hệ | V-Grow Agency</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -15,8 +15,8 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Affiliate Live Co.">
-        <img class="brand-logo" src="assets/company-logo.png" alt="Affiliate Live Co.">
+      <a class="brand" href="index.html" aria-label="V-Grow Agency">
+        <img class="brand-logo" src="assets/company-logo.png" alt="V-Grow Agency">
       </a>
       <nav class="main-nav" id="mainNav" aria-label="Menu chính">
         <a class="nav-link" href="index.html">Trang chủ</a>
@@ -32,31 +32,37 @@
   </header>
 
   <main>
+    <!-- ── PAGE HERO ───────────────────────────────────────────── -->
     <section class="page-hero">
       <div class="orb orb-blue" style="top:-100px;right:15%;opacity:.5;"></div>
       <div class="container">
         <p class="eyebrow" data-anime="fade" data-anime-delay="100">Liên hệ</p>
-        <h1 data-anime="fadeUp" data-anime-delay="200">Trao đổi với đội ngũ Affiliate Live Co.</h1>
-        <p class="lead" data-anime="fadeUp" data-anime-delay="320">Gửi thông tin liên hệ hoặc đặt lịch hẹn nếu bạn đã sẵn sàng trao đổi về sản phẩm và mô hình hợp tác.</p>
+        <h1 data-anime="fadeUp" data-anime-delay="200">Liên Hệ Với V-Grow Agency</h1>
+        <p class="lead" data-anime="fadeUp" data-anime-delay="320">Chúng tôi luôn sẵn sàng đồng hành cùng doanh nghiệp trong các chiến dịch Affiliate Marketing và Livestream Commerce.</p>
       </div>
     </section>
 
+    <!-- ── THÔNG TIN + FORM ────────────────────────────────────── -->
     <section class="section">
       <div class="container form-layout">
         <aside class="info-panel" data-anime="fadeRight">
-          <h2>Thông tin công ty</h2>
+          <h2>Thông tin liên hệ</h2>
           <ul class="info-list">
-            <li><strong>Số điện thoại</strong><span>0900 123 456</span></li>
-            <li><strong>Email</strong><span>hello@affiliatelive.vn</span></li>
-            <li><strong>Địa chỉ</strong><span>TP. Hồ Chí Minh</span></li>
-            <li><strong>Giờ làm việc</strong><span>Thứ 2 - Thứ 6, 08:30 - 17:30</span></li>
+            <li><strong>📞 Hotline</strong><span>0900 123 456</span></li>
+            <li><strong>📧 Email</strong><span>vgrowagency@gmail.com</span></li>
+            <li><strong>📍 Địa chỉ</strong><span>40 Hoa Phượng, phường Cầu Kiệu, TP.HCM</span></li>
+            <li><strong>🌐 Website</strong><span>V-Grow Agency</span></li>
+            <li><strong>📱 TikTok</strong><span>@vgrowagency</span></li>
+            <li><strong>📘 Facebook</strong><span>V-Grow Agency</span></li>
+            <li><strong>🕐 Giờ làm việc</strong><span>Thứ 2 - Thứ 6, 08:30 - 17:30</span></li>
           </ul>
         </aside>
 
         <form class="form-card" id="contactForm" novalidate data-anime="fadeLeft" data-anime-delay="150">
+          <h2>Đăng Ký Tư Vấn Miễn Phí</h2>
           <div class="form-grid">
             <div class="form-field">
-              <label for="contact_name">Họ tên</label>
+              <label for="contact_name">Họ và tên</label>
               <input id="contact_name" name="contact_name" type="text" autocomplete="name" required placeholder="Nguyễn Văn A">
               <span class="field-error" data-error-for="contact_name"></span>
             </div>
@@ -71,17 +77,41 @@
               <span class="field-error" data-error-for="contact_email"></span>
             </div>
             <div class="form-field full">
-              <label for="contact_message">Nội dung liên hệ</label>
-              <textarea id="contact_message" name="contact_message" rows="6" required placeholder="Mô tả sản phẩm và dịch vụ bạn quan tâm..."></textarea>
+              <label for="contact_company">Tên doanh nghiệp</label>
+              <input id="contact_company" name="contact_company" type="text" placeholder="Tên công ty / thương hiệu của bạn">
+            </div>
+            <div class="form-field full">
+              <label for="contact_message">Nhu cầu hỗ trợ</label>
+              <textarea id="contact_message" name="contact_message" rows="5" required placeholder="Mô tả nhu cầu hỗ trợ của bạn..."></textarea>
               <span class="field-error" data-error-for="contact_message"></span>
             </div>
           </div>
           <div class="form-actions">
-            <button class="btn btn-primary btn-magnetic" type="submit">Gửi liên hệ</button>
-            <a class="btn btn-outline" href="booking.html">Đặt lịch hẹn</a>
+            <button class="btn btn-primary btn-magnetic" type="submit" id="contactSubmitBtn">Gửi thông tin</button>
           </div>
           <div class="form-message" id="contactMessage" role="status"></div>
         </form>
+      </div>
+    </section>
+
+    <!-- ── FAQ ────────────────────────────────────────────────── -->
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-header" data-anime="fadeUp" style="text-align:center;">
+          <p class="eyebrow">Câu hỏi thường gặp</p>
+          <h2>Những câu hỏi mà khách hàng hay thắc mắc</h2>
+          <div class="section-divider" style="margin:16px auto;"></div>
+        </div>
+        <div class="faq-list" data-anime-group>
+          <div class="faq-item card card-glow" data-anime-child>
+            <h3>Có cần gửi hàng mẫu cho KOL/KOC không?</h3>
+            <p>Có. Hàng mẫu giúp nhà sáng tạo trải nghiệm và sản xuất nội dung hiệu quả hơn.</p>
+          </div>
+          <div class="faq-item card card-glow" data-anime-child>
+            <h3>Livestream có cam kết doanh số không?</h3>
+            <p>Doanh số phụ thuộc vào sản phẩm, giá bán và chương trình ưu đãi tùy nhãn hàng tùy thời điểm.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -89,12 +119,12 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
-        <div><a class="brand" href="index.html"><img class="brand-logo" src="assets/company-logo.png" alt="Affiliate Live Co."></a><p>Đơn vị hỗ trợ nhãn hàng bán sản phẩm thông qua tiếp thị liên kết, livestream bán hàng và gói kết hợp toàn diện.</p></div>
+        <div><a class="brand" href="index.html"><img class="brand-logo" src="assets/company-logo.png" alt="V-Grow Agency"></a><p>V-Grow đồng hành cùng các nhãn hàng giải quyết bài toán chi phí vận hành và rủi ro bán hàng trên nền tảng số.</p></div>
         <div><h3>Dịch vụ</h3><ul><li><a href="services.html">Tiếp thị liên kết</a></li><li><a href="services.html">Livestream bán hàng</a></li><li><a href="services.html">Gói bao trọn</a></li></ul></div>
-        <div><h3>Liên hệ</h3><ul><li>0900 123 456</li><li>hello@affiliatelive.vn</li><li>TP. Hồ Chí Minh</li></ul></div>
-        <div><h3>Mạng xã hội</h3><ul><li><a href="contact.html">Facebook</a></li><li><a href="contact.html">TikTok</a></li><li><a href="contact.html">YouTube</a></li></ul></div>
+        <div><h3>Liên hệ</h3><ul><li>0900 123 456</li><li>vgrowagency@gmail.com</li><li>40 Hoa Phượng, Cầu Kiệu, TP.HCM</li></ul></div>
+        <div><h3>Mạng xã hội</h3><ul><li><a href="contact.html">Facebook</a></li><li><a href="contact.html">TikTok</a></li></ul></div>
       </div>
-      <div class="footer-bottom">© 2026 Affiliate Live Co. All rights reserved.</div>
+      <div class="footer-bottom">© 2026 V-Grow Agency. All rights reserved.</div>
     </div>
   </footer>
 
