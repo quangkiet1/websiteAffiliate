@@ -9,13 +9,18 @@
   <link rel="stylesheet" href="css/premium.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body class="has-fixed-header" data-page="home">
+<body class="has-fixed-header has-promo-bar" data-page="home">
+
+  <!-- Promo bar -->
+  <div class="commerce-promo-bar" id="promoBar" role="banner">
+    🎉 <strong>Ưu đãi tháng 6:</strong> Miễn phí tư vấn chiến lược TikTok Shop — <a href="booking.html">Đặt lịch ngay</a>
+    <button class="commerce-promo-close" id="promoClose" aria-label="Đóng thông báo">×</button>
+  </div>
 
   <!-- Scroll progress bar -->
   <div id="scrollProgress"></div>
 
-  <!-- Custom cursor glow -->
-  <div id="cursorGlow"></div>
+  <!-- Custom cursor glow removed -->
 
   <header class="site-header">
     <div class="container header-inner">
@@ -29,6 +34,9 @@
         <a class="nav-link" href="contact.html">Liên hệ</a>
       </nav>
       <div class="header-actions">
+        <button id="themeToggle" class="btn btn-icon" aria-label="Chuyển đổi giao diện" style="background:transparent; border:none; cursor:pointer; font-size:1.5rem; color:var(--text-primary); margin-right:8px; display:inline-flex; align-items:center; justify-content:center;" title="Chế độ tối/sáng">
+          <span class="theme-icon">🌙</span>
+        </button>
         <a class="btn btn-primary btn-magnetic" href="booking.html">Đặt lịch hẹn</a>
         <button class="menu-toggle" type="button" aria-label="Mở menu" aria-controls="mainNav" aria-expanded="false">
           <span></span>
@@ -38,54 +46,81 @@
   </header>
 
   <main>
-    <!-- ── HERO ────────────────────────────────────────────────── -->
-    <section class="hero hero-bg-image">
-      <!-- Background image overlay -->
-      <div class="hero-bg-overlay"></div>
-
-      <div class="container" style="position: relative; z-index: 2; padding: 80px 0;">
-        <div class="hero-content-center">
-          <div class="hero-badge" data-anime="fade" data-anime-delay="100" style="background: rgba(67,198,57,0.15); border-color: rgba(67,198,57,0.5); color: #43c639;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 256 256"><path d="M176.49,95.51a12,12,0,0,1,0,17l-56,56a12,12,0,0,1-17,0l-24-24a12,12,0,1,1,17-17L112,143l47.51-47.52A12,12,0,0,1,176.49,95.51ZM236,128A108,108,0,1,1,128,20,108.12,108.12,0,0,1,236,128Zm-24,0a84,84,0,1,0-84,84A84.09,84.09,0,0,0,212,128Z"></path></svg>
-            <strong>ĐỐI TÁC THỰC THI &amp; TĂNG TRƯỞNG DOANH THU</strong>
+    <!-- ── HERO (Figma E-commerce Split) ─────────────────────── -->
+    <section class="hero hero-commerce">
+      <div class="hero-commerce-text">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Đội ngũ nội bộ bán hàng theo hoa hồng
+        </div>
+        <h1>Hỗ trợ nhãn hàng<br><span class="text-gradient">bán sản phẩm</span><br>qua Affiliate &amp; Livestream</h1>
+        <p class="lead">Chúng tôi giúp nhãn hàng đưa sản phẩm đến khách hàng thông qua tiếp thị liên kết, livestream bán hàng và gói kết hợp toàn diện. Nhãn hàng cung cấp sản phẩm — đội ngũ V-Grow trực tiếp quảng bá và bán hàng.</p>
+        <div class="hero-commerce-actions">
+          <a href="booking.html" class="btn btn-primary btn-magnetic">Đặt lịch hẹn miễn phí</a>
+          <a href="services.html" class="btn btn-secondary btn-magnetic">Xem gói dịch vụ</a>
+        </div>
+        <div class="hero-stats" data-scroll-stagger>
+          <div class="hero-stat">
+            <strong data-count-up="150">0</strong><span>Chiến dịch đã triển khai</span>
           </div>
-
-          <h1 data-anime="fadeUp" data-anime-delay="200" style="color:#fff; text-shadow: 0 2px 20px rgba(0,0,0,0.5);">
-            Hỗ trợ nhãn hàng bán qua<br/>
-            <span id="typingText" data-words="Affiliate|Livestream|Hoa hồng" style="color: #43c639;"></span><span class="typing-cursor" style="background:#43c639;"></span>
-          </h1>
-
-          <p class="lead" data-anime="fadeUp" data-anime-delay="350" style="color: rgba(255,255,255,0.88); max-width: 720px; margin: 0 auto 32px;">
-            V GROW đồng hành cùng các nhãn hàng giải quyết bài toán chi phí vận hành và rủi ro bán hàng trên nền tảng số. Bằng việc kết hợp năng lực sáng tạo nội dung và mạng lưới liên kết tối ưu, chúng tôi cam kết mang đến giải pháp bán hàng toàn diện, giúp doanh nghiệp giảm thiểu rủi ro và thúc đẩy mạnh mẽ số lượng đơn hàng.
-          </p>
-
-          <div class="hero-search" data-anime="fadeUp" data-anime-delay="450" style="margin: 0 auto 32px; max-width: 560px;">
-             <input type="text" placeholder="Bạn muốn bán sản phẩm gì hôm nay?" />
-             <a href="booking.html" class="hero-search-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
-             </a>
+          <div class="hero-stat">
+            <strong data-count-up="50">0</strong><span>Nhãn hàng đối tác</span>
           </div>
-
-          <div class="hero-features" aria-label="Điểm nổi bật" data-anime="fadeUp" data-anime-delay="550" style="justify-content: center;">
-            <div class="hero-feature">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#43c639" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
-              <span style="color:#fff;">3 Gói dịch vụ chính</span>
-            </div>
-            <div class="hero-feature">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#43c639" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
-              <span style="color:#fff;">Đội ngũ <strong style="color:#43c639;">Affiliate</strong> &amp; <strong style="color:#43c639;">Live</strong> nội bộ</span>
-            </div>
-            <div class="hero-feature">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#43c639" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
-              <span style="color:#fff;">Quy trình hợp tác rõ ràng</span>
-            </div>
+          <div class="hero-stat">
+            <strong data-count-up="98">0</strong><span>% Khách hài lòng</span>
           </div>
+        </div>
+      </div>
+
+      <div class="hero-commerce-visual">
+        <div class="hero-mockup">
+          <div class="hero-mockup-notch"></div>
+          <div class="hero-mockup-screen"></div>
+          <div class="hero-mockup-live">Live</div>
+          <div class="hero-mockup-product">
+            <div class="hero-mockup-product-thumb">🛍️</div>
+            <div class="hero-mockup-product-info">
+              <strong>Sản phẩm nhãn hàng</strong>
+              <span>Giảm 30% — Mua ngay!</span>
+            </div>
+            <button class="hero-mockup-buy" type="button">Mua</button>
+          </div>
+        </div>
+        <div class="hero-float-card hero-float-card-1">
+          <strong>+240%</strong>
+          <small>Doanh số sau 3 tháng</small>
+        </div>
+        <div class="hero-float-card hero-float-card-2">
+          <strong>24 phiên</strong>
+          <small>Livestream / tháng</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRUST MARQUEE ──────────────────────────────────────── -->
+    <section class="trust-marquee-section" aria-label="Đối tác nền tảng">
+      <p class="trust-marquee-label">Vận hành trên các nền tảng hàng đầu</p>
+      <div class="trust-marquee-wrap">
+        <div class="trust-marquee-track">
+          <span class="trust-logo-item"><span class="trust-logo-icon">🎵</span> TikTok Shop</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">📱</span> TikTok Ads</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">🔗</span> Affiliate Marketing</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">📺</span> Live Commerce</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">📊</span> GMV Analytics</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">🎯</span> KOC Network</span>
+          <!-- duplicate for seamless loop -->
+          <span class="trust-logo-item"><span class="trust-logo-icon">🎵</span> TikTok Shop</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">📱</span> TikTok Ads</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">🔗</span> Affiliate Marketing</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">📺</span> Live Commerce</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">📊</span> GMV Analytics</span>
+          <span class="trust-logo-item"><span class="trust-logo-icon">🎯</span> KOC Network</span>
         </div>
       </div>
     </section>
 
     <!-- ── SECTION 2: VẤN ĐỀ DOANH NGHIỆP ─────────────────────── -->
-    <section class="section section-dark-problems">
+    <section class="section section-dark-problems dot-grid dot-grid-dark">
       <div class="container">
         <div class="section-header" data-anime="fadeUp" style="text-align:center;">
           <h2 style="color:#fff;">Doanh nghiệp của bạn đang gặp những vấn đề này?</h2>
@@ -117,7 +152,7 @@
     </section>
 
     <!-- ── SERVICES ─────────────────────────────────────────────── -->
-    <section id="services" class="section">
+    <section id="services" class="section dot-grid">
       <div class="container">
         <div class="section-header" data-anime="fadeUp" style="text-align:center;">
           <p class="eyebrow">Giải pháp của V-Grow</p>
@@ -128,46 +163,60 @@
 
         <div class="grid grid-3" data-anime-group>
           <!-- Gói 1 -->
-          <div class="card card-glow" data-anime-child="fadeUp">
-            <div style="padding: 32px;">
-              <div class="card-kicker">01</div>
-              <h3 style="margin-bottom: 16px;">Tiếp thị liên kết</h3>
-              <p>Phù hợp với nhãn hàng muốn bán sản phẩm thông qua link affiliate, nội dung giới thiệu sản phẩm.</p>
-              <div class="price-mini">5.000.000 VNĐ/tháng + 10% GMV</div>
+          <article class="ecom-card wobble-card card-glow-enhanced" data-anime-child="fadeUp">
+            <div class="ecom-card-header">
+              <div class="ecom-card-icon">🔗</div>
             </div>
-            <div style="padding: 20px 32px; border-top: 1px solid var(--surface-200); display: flex; justify-content: center;">
+            <div class="ecom-card-body">
+              <h3>Tiếp thị liên kết</h3>
+              <p>Phù hợp với nhãn hàng muốn bán sản phẩm thông qua link affiliate, nội dung giới thiệu sản phẩm.</p>
+              <div class="ecom-price-tag">
+                <span class="ecom-price-main">5.000.000đ</span>
+                <span class="ecom-price-sub">/tháng + 10% GMV</span>
+              </div>
+            </div>
+            <div class="ecom-card-footer">
               <a class="btn btn-primary btn-magnetic" href="services.html#goi-1">Xem chi tiết</a>
             </div>
-          </div>
+          </article>
 
           <!-- Gói 2 -->
-          <div class="card card-glow" data-anime-child="fadeUp">
-            <div style="padding: 32px;">
-              <div class="card-kicker">02</div>
-              <h3 style="margin-bottom: 16px;">Livestream bán hàng</h3>
-              <p>Đội ngũ nội bộ trực tiếp giới thiệu, tư vấn và bán sản phẩm thông qua livestream.</p>
-              <div class="price-mini">17.000.000 VNĐ/tháng + 8% GMV</div>
+          <article class="ecom-card wobble-card card-glow-enhanced" data-anime-child="fadeUp">
+            <div class="ecom-card-header">
+              <span class="ecom-card-badge">Phổ biến</span>
+              <div class="ecom-card-icon">🎙️</div>
             </div>
-            <div style="padding: 20px 32px; border-top: 1px solid var(--surface-200); display: flex; justify-content: center;">
+            <div class="ecom-card-body">
+              <h3>Livestream bán hàng</h3>
+              <p>Đội ngũ nội bộ trực tiếp giới thiệu, tư vấn và bán sản phẩm thông qua livestream chuyên nghiệp.</p>
+              <div class="ecom-price-tag">
+                <span class="ecom-price-main">17.000.000đ</span>
+                <span class="ecom-price-sub">/tháng + 8% GMV</span>
+              </div>
+            </div>
+            <div class="ecom-card-footer">
               <a class="btn btn-primary btn-magnetic" href="services.html#goi-2">Xem chi tiết</a>
             </div>
-          </div>
+          </article>
 
           <!-- Gói 3 -->
-          <div class="card card-glow" data-anime-child="fadeUp" style="border: 2px solid var(--brand-400); position:relative;">
-            <div style="position: absolute; right: 20px; top: 20px; background: var(--brand-100); color: var(--brand-700); padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; text-transform: uppercase;">
-              Best Seller
+          <article class="ecom-card is-featured wobble-card card-glow-enhanced" data-anime-child="fadeUp">
+            <div class="ecom-card-header">
+              <span class="ecom-card-badge is-best">Best Seller</span>
+              <div class="ecom-card-icon">⭐</div>
             </div>
-            <div style="padding: 32px;">
-              <div class="card-kicker" style="background: var(--brand-600); color: #fff;">03</div>
-              <h3 style="margin-bottom: 16px;">Gói bao trọn</h3>
+            <div class="ecom-card-body">
+              <h3>Gói bao trọn</h3>
               <p>Kết hợp cả tiếp thị liên kết và livestream để tăng khả năng tiếp cận khách hàng tối đa.</p>
-              <div class="price-mini" style="background: var(--brand-600); color: #fff !important;">20.000.000 VNĐ/tháng + 7% GMV</div>
+              <div class="ecom-price-tag">
+                <span class="ecom-price-main">20.000.000đ</span>
+                <span class="ecom-price-sub">/tháng + 7% GMV</span>
+              </div>
             </div>
-            <div style="padding: 20px 32px; border-top: 1px solid var(--surface-200); display: flex; justify-content: center;">
+            <div class="ecom-card-footer">
               <a class="btn btn-primary btn-magnetic" href="services.html#goi-3">Xem chi tiết</a>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -202,8 +251,87 @@
       </div>
     </section>
 
+    <!-- ── HOW IT WORKS ───────────────────────────────────────── -->
+    <section class="section dot-grid" data-scroll-animate>
+      <div class="container">
+        <div class="section-header" style="text-align:center; margin-bottom:48px;">
+          <p class="eyebrow">Quy trình hợp tác</p>
+          <h2>Bắt đầu bán hàng chỉ với 4 bước</h2>
+          <div class="section-divider" style="margin:16px auto;"></div>
+        </div>
+        <div class="how-it-works" data-scroll-stagger>
+          <div class="how-step">
+            <div class="how-step-num">01</div>
+            <h3>Đặt lịch tư vấn</h3>
+            <p>Gửi yêu cầu và chọn thời gian phù hợp để trao đổi với đội ngũ V-Grow.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">02</div>
+            <h3>Chọn gói dịch vụ</h3>
+            <p>Affiliate, Livestream hoặc Gói bao trọn — tùy theo mục tiêu kinh doanh của bạn.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">03</div>
+            <h3>Triển khai chiến dịch</h3>
+            <p>Đội ngũ nội bộ lên kịch bản, sản xuất nội dung và vận hành livestream.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">04</div>
+            <h3>Theo dõi &amp; tối ưu</h3>
+            <p>Báo cáo GMV hàng tháng, tối ưu chiến dịch theo hiệu suất thực tế.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ─────────────────────────────────────────── -->
+    <section class="section section-muted dot-grid" data-scroll-animate>
+      <div class="container">
+        <div class="section-header" style="text-align:center; margin-bottom:48px;">
+          <p class="eyebrow">Khách hàng nói gì</p>
+          <h2>Đối tác tin tưởng V-Grow</h2>
+          <div class="section-divider" style="margin:16px auto;"></div>
+        </div>
+        <div class="testimonial-grid" data-scroll-stagger>
+          <div class="testimonial-card wobble-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <blockquote>Sau 2 tháng hợp tác livestream, doanh số shop tăng gấp 3 lần. Đội ngũ V-Grow rất chuyên nghiệp và báo cáo minh bạch.</blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">NL</div>
+              <div>
+                <strong>Nguyễn Lan</strong>
+                <span>Chủ shop mỹ phẩm — TP.HCM</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card wobble-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <blockquote>Gói affiliate giúp chúng tôi tiếp cận KOC phù hợp mà không cần tự vận hành. Chi phí theo GMV rất hợp lý cho SME.</blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">TH</div>
+              <div>
+                <strong>Trần Hùng</strong>
+                <span>Giám đốc thương hiệu thực phẩm</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card wobble-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <blockquote>Gói bao trọn là lựa chọn tốt nhất — vừa có video affiliate vừa có livestream. ROI rõ ràng sau từng tháng.</blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">PM</div>
+              <div>
+                <strong>Phạm Mai</strong>
+                <span>Founder thương hiệu thời trang</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── CTA ─────────────────────────────────────────────────── -->
-    <section class="cta-band">
+    <section class="cta-band cta-band-enhanced">
       <div class="container cta-inner">
         <div data-anime="fadeUp">
           <h2>Bạn muốn hợp tác bán sản phẩm cùng V-Grow?</h2>
@@ -251,10 +379,18 @@
     </div>
   </footer>
 
+  <!-- Floating CTA -->
+  <a href="booking.html" class="floating-cta" id="floatingCta" aria-label="Đặt lịch hẹn">
+    <span class="floating-cta-icon">📅</span>
+    <span>Đặt lịch hẹn</span>
+  </a>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/nextmotion-fx.js"></script>
+  <script src="js/commerce-ui.js"></script>
   <script>
     window.addEventListener('scroll', () => {
       const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;

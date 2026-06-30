@@ -1,4 +1,9 @@
-﻿const CONTACT_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// ============================================================
+// CONTACT.JS — Form validation & submission
+// V-Grow Agency
+// ============================================================
+
+const CONTACT_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function contactSetError(name, message) {
   const error = document.querySelector(`[data-error-for="${name}"]`);
@@ -31,24 +36,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const errors = {};
-    if (!values.contact_name) errors.contact_name = 'Vui l�ng nh?p h? t�n.';
-    if (!values.contact_phone) errors.contact_phone = 'Vui l�ng nh?p s? di?n tho?i.';
+    if (!values.contact_name) errors.contact_name = 'Vui lòng nhập họ tên.';
+    if (!values.contact_phone) errors.contact_phone = 'Vui lòng nhập số điện thoại.';
     if (!values.contact_email) {
-      errors.contact_email = 'Vui l�ng nh?p email.';
+      errors.contact_email = 'Vui lòng nhập email.';
     } else if (!CONTACT_EMAIL_PATTERN.test(values.contact_email)) {
-      errors.contact_email = 'Email chua d�ng d?nh d?ng.';
+      errors.contact_email = 'Email chưa đúng định dạng.';
     }
-    if (!values.contact_message) errors.contact_message = 'Vui l�ng nh?p n?i dung li�n h?.';
+    if (!values.contact_message) errors.contact_message = 'Vui lòng nhập nội dung liên hệ.';
 
     if (Object.keys(errors).length > 0) {
       Object.entries(errors).forEach(([name, message]) => contactSetError(name, message));
-      contactShowMessage('error', 'Vui l�ng ki?m tra l?i th�ng tin li�n h?.');
+      contactShowMessage('error', 'Vui lòng kiểm tra lại thông tin liên hệ.');
       return;
     }
 
     form.reset();
-    contactShowMessage('success', 'C?m on b?n d� li�n h?. Ch�ng t�i s? ph?n h?i trong th?i gian s?m nh?t.');
+    contactShowMessage('success', 'Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.');
+
+    // Reset email preview
+    const previewBody = document.getElementById('emailPreviewBody');
+    if (previewBody) {
+      previewBody.innerHTML = '<div class="ep-placeholder">✅ Email đã được gửi thành công!</div>';
+    }
   });
 });
-
-
