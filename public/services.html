@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body class="has-fixed-header" data-page="services">
-  <div id="scrollProgress"></div>
-  <div id="cursorGlow"></div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -32,20 +30,18 @@
   </header>
 
   <main>
-    <!-- ── PAGE HERO ───────────────────────────────────────────── -->
-    <section class="page-hero">
-      <div class="orb orb-violet" style="top:-100px;left:30%;opacity:.4;"></div>
+    <!-- ── PAGE HERO ─────────────────────────────────────────── -->
+    <section class="page-hero services-hero-bg">
       <div class="container">
-        <p class="eyebrow" data-anime="fade" data-anime-delay="100">Dịch vụ</p>
-        <h1 data-anime="fadeUp" data-anime-delay="200">DỊCH VỤ VẬN HÀNH LIVESTREAM VÀ TIẾP THỊ LIÊN KẾT TRỌN GÓI</h1>
-        <p class="lead" data-anime="fadeUp" data-anime-delay="320">Giải pháp bán hàng dành riêng cho các nhãn hàng. V-Grow chịu trách nhiệm toàn bộ khâu vận hành phòng live và tối ưu hóa doanh số, đối tác chỉ trả chi phí hoa hồng theo hiệu suất thực tế qua tiếp thị liên kết.</p>
+        <h1 data-anime="fadeUp" data-anime-delay="200">Dịch Vụ Vận Hành Livestream Và Tiếp Thị Liên Kết Trọn Gói</h1>
+        <p class="lead" data-anime="fadeUp" data-anime-delay="320">Giải pháp bán hàng dành riêng cho các nhãn hàng. V-Grow chịu trách nhiệm toàn bộ khâu vận hành phòng live và tối ưu hóa doanh số, đối tác chỉ trả chi phí hoa hồng theo hiệu suất thực tế.</p>
       </div>
     </section>
 
-    <!-- ── 3 GÓI DỊCH VỤ ──────────────────────────────────────── -->
+    <!-- ── 3 GÓI DỊCH VỤ ─────────────────────────────────────── -->
     <section class="section">
       <div class="container">
-        <div class="grid-3" data-anime-group>
+        <div class="services-packages-grid" data-anime-group>
 
           <!-- GÓI 1 -->
           <article id="goi-1" class="card card-glow service-card" data-anime-child>
@@ -85,9 +81,10 @@
             <a class="btn btn-primary btn-magnetic" href="service-detail-2.html">Xem chi tiết</a>
           </article>
 
-          <!-- GÓI 3 -->
-          <article id="goi-3" class="card card-glow service-card" data-anime-child style="border-color: rgba(124,58,237,.3);">
-            <span class="tag" style="background:rgba(124,58,237,.2);color:#c4b5fd;border-color:rgba(124,58,237,.3);">Gói 3 — Nổi bật</span>
+          <!-- GÓI 3 (highlighted) -->
+          <article id="goi-3" class="card card-glow service-card service-card-featured" data-anime-child>
+            <span class="service-featured-badge">⭐ Nổi bật</span>
+            <span class="tag" style="background:rgba(101,86,255,.15); color:var(--brand-500); border:1px solid rgba(101,86,255,.3);">Gói 3</span>
             <div>
               <h2>Gói bao tròn Affiliate và Livestream</h2>
               <p>Phù hợp với nhãn hàng muốn tăng trưởng toàn diện. Shop muốn kết hợp Video + Livestream. Doanh nghiệp cần đội ngũ vận hành trọn gói.</p>
@@ -109,7 +106,7 @@
       </div>
     </section>
 
-    <!-- ── CTA ─────────────────────────────────────────────────── -->
+    <!-- ── CTA ──────────────────────────────────────────────── -->
     <section class="cta-band">
       <div class="container cta-inner">
         <div data-anime="fadeUp">
@@ -137,11 +134,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
-  <script>
-    window.addEventListener('scroll', () => {
-      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-      document.getElementById('scrollProgress').style.width = pct + '%';
-    }, { passive: true });
-  </script>
 </body>
 </html>

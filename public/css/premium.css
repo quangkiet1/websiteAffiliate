@@ -612,10 +612,11 @@ body {
 /* ── Section Headers ────────────────────────────────────────── */
 .eyebrow {
   color: var(--brand-600);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .12em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .10em;
   text-transform: uppercase;
+  opacity: 0.7;
 }
 
 h1, h2, h3, h4, h5, h6 { 
@@ -854,15 +855,9 @@ h3 {
   padding-top: 24px;
 }
 
-/* ── Scroll progress bar ────────────────────────────────────── */
+/* ── Scroll progress bar — hidden on homepage (no element in DOM) ── */
 #scrollProgress {
-  position: fixed;
-  top: 0; left: 0;
-  height: 4px;
-  width: 0%;
-  background: var(--grad-brand);
-  z-index: 9999;
-  transition: width .1s linear;
+  display: none;
 }
 
 /* ── Animated gradient border card ─────────────────────────── */
@@ -1347,9 +1342,9 @@ h3 {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity .4s var(--ease-smooth);
+  transition: opacity .6s ease;
   pointer-events: none;
-  animation: glow-spin 4s linear infinite paused;
+  animation: glow-spin 8s linear infinite paused;
 }
 .card-glow-enhanced:hover::after {
   opacity: 1;
@@ -1360,44 +1355,20 @@ h3 {
   100% { filter: hue-rotate(360deg); }
 }
 
-/* ── 3. WOBBLE CARDS (nextMotion-style) ────────────────────── */
+/* ── 3. WOBBLE CARDS — refined to a clean lift, no 3D noise ── */
 .wobble-card {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  transition: transform .35s var(--ease-spring), box-shadow .35s;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  cursor: default;
+  transition: transform .3s var(--ease-smooth), box-shadow .3s;
 }
 .wobble-card:hover {
-  box-shadow: 0 20px 50px rgba(101,86,255,0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(101,86,255,0.12);
 }
-/* Noise texture overlay for wobble cards */
-.wobble-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
-  border-radius: inherit;
-}
-/* Wobble card inner glow on hover */
+/* Inner glow disabled — too aggressive on static cards */
 .wobble-card .wobble-glow {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(101,86,255,0.25) 0%, transparent 70%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .3s;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-.wobble-card:hover .wobble-glow {
-  opacity: 1;
+  display: none;
 }
 
 /* ── 4. SCROLL ANIMATE-PRESENCE (show/hide on scroll) ──────── */
@@ -1422,6 +1393,10 @@ h3 {
 [data-scroll-stagger].is-visible > *:nth-child(4) { transition-delay: 240ms; opacity: 1; transform: translateY(0); }
 [data-scroll-stagger].is-visible > *:nth-child(5) { transition-delay: 320ms; opacity: 1; transform: translateY(0); }
 [data-scroll-stagger].is-visible > *:nth-child(6) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-scroll-animate], [data-scroll-stagger] > * { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
 
 /* ── 5. SPLIT-PANE CONTACT FORM + EMAIL PREVIEW ───────────── */
 .contact-split {
@@ -1586,50 +1561,12 @@ h3 {
 
 /* ── Promo Announcement Bar ─────────────────────────────────── */
 .commerce-promo-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 60;
-  background: var(--grad-brand);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  padding: 10px 48px 10px 16px;
-  letter-spacing: .02em;
-  transform: translateY(-100%);
-  animation: promo-slide-in .6s var(--ease-expo) .3s forwards;
+  display: none;
 }
-.commerce-promo-bar a {
-  color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.commerce-promo-bar strong {
-  color: #fde047;
-  font-weight: 800;
-}
-.commerce-promo-close {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,.15);
-  border: none;
-  color: #fff;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  transition: background .2s;
-}
-.commerce-promo-close:hover { background: rgba(255,255,255,.3); }
 
-body.has-promo-bar { padding-top: calc(var(--header-height) + 40px); }
-body.has-promo-bar .site-header { top: 40px; }
+body.has-promo-bar { padding-top: var(--header-height); }
+body.has-promo-bar .site-header { top: 0; }
+/* Promo bar removed from homepage — these classes are kept for other pages */
 body.has-promo-bar.promo-dismissed { padding-top: var(--header-height); }
 body.has-promo-bar.promo-dismissed .site-header { top: 0; }
 body.has-promo-bar.promo-dismissed .commerce-promo-bar { display: none; }
@@ -1646,10 +1583,9 @@ body.has-promo-bar.promo-dismissed .commerce-promo-bar { display: none; }
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
   overflow: hidden;
-  background: linear-gradient(135deg, #07091f 0%, #0f1235 45%, #0a1628 100%) !important;
-  background-image: none !important;
+  background: var(--surface-body); /* Adapt to theme */
   padding: 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .hero-commerce::before {
@@ -1657,8 +1593,8 @@ body.has-promo-bar.promo-dismissed .commerce-promo-bar { display: none; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 70% at 20% 60%, rgba(101,86,255,0.22) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 50% at 85% 20%, rgba(67,198,57,0.1) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 70% at 20% 60%, rgba(101,86,255,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 85% 20%, rgba(67,198,57,0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -1673,22 +1609,36 @@ body.has-promo-bar.promo-dismissed .commerce-promo-bar { display: none; }
 }
 
 .hero-commerce-text .hero-badge {
-  background: rgba(101,86,255,0.2);
-  border-color: rgba(101,86,255,0.45);
-  color: #c4b5fd;
+  background: rgba(101,86,255,0.1);
+  border: 1px solid rgba(101,86,255,0.2);
+  color: var(--brand-600);
   margin-bottom: 28px;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+[data-theme="dark"] .hero-commerce-text .hero-badge {
+  background: rgba(101,86,255,0.2);
+  border-color: rgba(101,86,255,0.3);
+  color: #c4b5fd;
 }
 
 .hero-commerce-text h1 {
   font-size: clamp(36px, 4.5vw, 62px);
   font-weight: 700;
   line-height: 1.08;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 24px;
   letter-spacing: -.02em;
 }
 
 .hero-commerce-text h1 .text-gradient {
+  background: linear-gradient(135deg, var(--brand-500) 0%, #38bdf8 50%, var(--accent-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-theme="dark"] .hero-commerce-text h1 .text-gradient {
   background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 50%, #43c639 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1696,7 +1646,7 @@ body.has-promo-bar.promo-dismissed .commerce-promo-bar { display: none; }
 }
 
 .hero-commerce-text .lead {
-  color: rgba(255,255,255,0.72);
+  color: var(--text-secondary);
   font-size: 17px;
   line-height: 1.75;
   max-width: 520px;
@@ -2246,46 +2196,32 @@ body.has-promo-bar.promo-dismissed .commerce-promo-bar { display: none; }
   color: var(--brand-800);
 }
 
-/* ── Floating CTA Button ──────────────────────────────────────── */
+/* ── Floating CTA — hidden on desktop, compact on mobile ──────── */
 .floating-cta {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 45;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--grad-brand);
-  color: #fff;
-  padding: 14px 22px;
-  border-radius: var(--radius-full);
-  font-weight: 700;
-  font-size: 14px;
-  box-shadow: 0 8px 32px rgba(101,86,255,0.45);
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transform: translateY(80px);
-  opacity: 0;
-  transition: transform .4s var(--ease-expo), opacity .4s, box-shadow .25s;
+  display: none;
 }
-.floating-cta.is-visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-.floating-cta:hover {
-  box-shadow: 0 12px 40px rgba(101,86,255,0.55);
-  color: #fff;
-  transform: translateY(-3px);
-}
-.floating-cta-icon {
-  width: 32px;
-  height: 32px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 16px;
+@media (max-width: 640px) {
+  .floating-cta {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    z-index: 45;
+    align-items: center;
+    justify-content: center;
+    background: var(--grad-brand);
+    color: #fff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    box-shadow: 0 6px 20px rgba(101,86,255,0.4);
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity .4s, box-shadow .25s;
+  }
+  .floating-cta.is-visible { opacity: 1; }
+  .floating-cta span:not(.floating-cta-icon) { display: none; }
+  .floating-cta-icon { font-size: 20px; }
 }
 
 /* ── Counter animation ──────────────────────────────────────────── */
@@ -2341,3 +2277,189 @@ body.has-promo-bar.promo-dismissed .commerce-promo-bar { display: none; }
     top: calc(var(--header-height) + 40px);
   }
 }
+
+/* -- NEW LAYOUT REFINEMENTS ------------------------------------- */
+.trust-platforms-static {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.trust-platform-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.trust-platform-sep {
+  opacity: 0.5;
+}
+
+/* -- Timeline for Home ------------------------------------------ */
+.how-it-works-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.how-timeline-step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 24px;
+  position: relative;
+}
+.how-timeline-num {
+  width: 48px;
+  height: 48px;
+  background: var(--surface-50);
+  border: 2px solid var(--brand-400);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--brand-600);
+  font-size: 18px;
+  z-index: 2;
+}
+[data-theme="dark"] .how-timeline-num {
+  color: var(--brand-300);
+}
+.how-timeline-connector {
+  position: absolute;
+  top: 48px;
+  left: 23px;
+  bottom: -32px;
+  width: 2px;
+  background: var(--surface-200);
+  z-index: 1;
+}
+.how-timeline-card {
+  background: var(--surface-body);
+  border: 1px solid var(--surface-200);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+.how-timeline-card h3 {
+  margin-bottom: 8px;
+}
+
+/* -- About Hero Image ------------------------------------------- */
+.about-hero-section {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
+  color: #fff;
+}
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.about-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(10, 13, 74, 0.9) 0%, rgba(10, 13, 74, 0.4) 100%);
+}
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+.about-hero-content h1,
+.about-hero-content .lead,
+.about-hero-content .eyebrow {
+  color: #fff;
+}
+
+/* -- Values Grid (5 cols) --------------------------------------- */
+.value-grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1200px) { .value-grid-5 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .value-grid-5 { grid-template-columns: 1fr; } }
+
+/* -- Journey Grid ----------------------------------------------- */
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.journey-step {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: var(--surface-50);
+  border: 1px solid var(--surface-200);
+  border-radius: var(--radius-lg);
+}
+.journey-step-num {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--brand-100);
+  line-height: 1;
+  opacity: 0.5;
+}
+[data-theme="dark"] .journey-step-num {
+  color: var(--surface-200);
+}
+@media (max-width: 768px) { .journey-grid { grid-template-columns: 1fr; } }
+
+/* -- Services Hero ---------------------------------------------- */
+.services-hero-bg {
+  background: radial-gradient(circle at top right, rgba(101,86,255,0.1), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(67,198,57,0.05), transparent 40%);
+  border-bottom: 1px solid var(--surface-200);
+}
+
+/* -- Featured Service Card -------------------------------------- */
+.services-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 900px) { .services-packages-grid { grid-template-columns: 1fr; } }
+
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.service-card-featured {
+  border-color: var(--brand-400);
+  box-shadow: 0 20px 40px rgba(101,86,255,0.1);
+  transform: translateY(-8px);
+}
+.service-featured-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--brand-400);
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(101,86,255,0.3);
+}
+[data-theme="dark"] .service-card-featured {
+  background: rgba(101,86,255,0.05);
+}
+
